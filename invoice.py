@@ -21,12 +21,10 @@ class Invoice:
         domain=[('party', '=', Eval('party'))])
 
     def on_change_party(self):
-        changes = super(Invoice, self).on_change_party()
+        super(Invoice, self).on_change_party()
 
-        changes['contact_address'] = None
+        self.contact_address = None
         if self.party:
             contact_address = self.party.address_get(type='contact')
             if contact_address:
-                changes['contact_address'] = contact_address.id
-                changes['contact_address.rec_name'] = contact_address.rec_name
-        return changes
+                self.contact_address = contact_address
