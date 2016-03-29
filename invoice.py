@@ -6,7 +6,6 @@ from trytond.model import fields
 from trytond.pyson import Eval
 
 __all__ = ['Invoice']
-__metaclass__ = PoolMeta
 
 _STATES = {
     'readonly': Eval('state') != 'draft',
@@ -15,6 +14,7 @@ _DEPENDS = ['state']
 
 
 class Invoice:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states=_STATES, depends=['state', 'party'],

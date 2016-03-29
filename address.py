@@ -5,9 +5,9 @@ from trytond.pool import PoolMeta
 from trytond.model import fields
 
 __all__ = ['Address']
-__metaclass__ = PoolMeta
 
 
 class Address:
+    __metaclass__ = PoolMeta
     __name__ = 'party.address'
     contact = fields.Boolean('Contact')
