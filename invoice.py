@@ -13,8 +13,7 @@ _STATES = {
 _DEPENDS = ['state']
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states=_STATES, depends=['state', 'party'],
